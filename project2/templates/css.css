@@ -1,0 +1,142 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body
+{
+    background-image: url(picture/R.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover; /* Prevent background image from repeating */
+    background-color: white;
+}
+header
+{
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-size:60px;
+    height: 80px;
+    /* font-size: 70px; */
+}
+header i{
+    font-size: 40px;
+}
+header ul li{
+    float: right;
+    /* display: inline-block; */
+    text-decoration: none;
+    list-style: none;
+    margin-left: 30px;
+    margin-top: -65px;
+}
+header a{
+    color:white;
+    text-decoration: none;
+}
+a{
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+}
+.logo{
+    float: left;
+    height: 50px;
+    width: 50px;
+    margin-top: 10px;
+    border-radius: 50px;
+    margin-left: 30px;
+}
+.info
+{
+    text-decoration: none;
+    height: 210px;
+    border: 1px solid black;
+    color:  white;
+    font-size: 30px;
+    /* background-color: rgb(193, 189, 187); */
+    /* background-color: #252222; */
+    background-color: black;
+}
+.box1
+{
+    display: flex;
+    justify-content: space-between;
+}
+.cricket ,.cycling, .basketball , .football , .hockey,.volleyball, .golf
+{
+    width: 220px;
+    height: 70px;
+    border-radius: 50px;
+    font-size: 50px;
+    border: 1px solid black;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    background-color: black;
+}
+.badminton
+{
+    width: 250px;
+    height: 70px;
+    border-radius: 50px;
+    font-size: 50px;
+    border: 1px solid black;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    background-color: black;
+}
+.box2, .box3
+{
+    display: flex;
+    justify-content: space-around;
+}
+.badminton, .basketball, .cricket ,.football, .hockey ,.volleyball, .golf, .info ,.cycling
+{
+    -webkit-box-shadow: 12px -9px 8px 1px rgba(23,23,23,1);
+-moz-box-shadow: 12px -9px 8px 1px rgba(23,23,23,1);
+box-shadow: 12px -9px 8px 1px rgba(23,23,23,1);
+}
+footer {
+    background-color: black;
+    color: white;
+    padding: 50px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 20px;
+}
+
+.footer-section h3 {
+    margin-bottom: 15px;
+}
+
+.footer-section ul {
+    padding: 0;
+    list-style: none;
+}
+
+.footer-section ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.footer-section ul li a {
+    color: white;
+    font-size: 24px;
+}
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    background-color: #333;
+    color: white;
+    margin-bottom: -80px;
+}
