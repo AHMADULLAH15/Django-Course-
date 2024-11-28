@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<h1>This is index page<h1>
+    {% comment %} <img src = "static/download.jpeg" alt = "Bird picture" /> {% endcomment %}
+    <img src = "{%static 'pic1.jpeg'%}" alt = "Bird picture" />
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum vero omnis sunt! Fugiat magnam cumque consequuntur consectetur accusamus maiores modi porro accusantium natus officia, beatae, voluptas quas quisquam. Nobis cumque modi, id minus omnis aliquam. Illum harum inventore laborum, odio commodi est asperiores reprehenderit sapiente blanditiis? A nostrum voluptatem autem?</p>
+{% endblock %}
