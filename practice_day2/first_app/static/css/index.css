@@ -1,0 +1,8 @@
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Ensures cards wrap to the next line if needed */
+    gap: 1rem; /* Optional: adds space between the cards */
+    padding: 1rem; /* Optional: adds space inside the box */
+}
