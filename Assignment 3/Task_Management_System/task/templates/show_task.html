@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 style="text-align: center;" >Show Task</h1><br><br>
+<div class="container">
+    <div class="row">
+        {% for tk in task %}
+        <div class="col-md-4"> <!-- Adjust col size as needed -->
+            <div class="card" style="width: 18rem; margin-bottom: 20px;">
+                <div class="card-body">
+                    <h5 class="card-title">Task ID - {{ tk.task_id }}</h5>
+                    <p class="card-title">Assign Date: {{ tk.task_assign_date }}</p>
+                    <p class="card-text">Description: {{ tk.task_description }}</p>
+                    <p class="card-title">Category: 
+                        {% for category in tk.categories.all %}
+                        {{ category.category_name }},
+                        {% endfor %}
+                    </p>
+                    {% if tk.is_completed %}
+                    <p class="card-text">Status: 
+                            Completed </p>
+                        {% else %}
+                            <button type="button" class='btn btn-warning '><a href="{% url "edit" tk.task_id%}" class="card-link text-decoration-none text-white">Edit</a></button>
+                            <button type="button" class='btn btn-danger '><a href="{% url "delete" tk.task_id %}" class="card-link text-decoration-none text-white">Delete</a></button>
+                        {% endif %}
+                    
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}
