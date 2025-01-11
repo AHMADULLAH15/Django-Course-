@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="text-align: center">This is home page</h1>
+    {% comment %} <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    {{form.name}} {% endcomment %}
+
+</div>
+{% comment %} <table class="table m-auto w-50% border-1px ">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {% for dt in data %}
+        <td>{{dt.name}}</td>
+        <td>{{dt.email}}</td>
+        <td><a href=" {% url 'deletedata' dt.id%} " class='btn btn-danger text-white'>Delete</a></td>
+    </tr>
+    {% endfor %}
+    
+</tbody>
+</table> {% endcomment %}
+{% endblock content %}
+
+
+
+
+
+
+{% comment %} {% extends "base.html" %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+<h1>Contact Uss</h1>
+<form method = "post">
+    {% csrf_token %}
+    {{form | crispy}}
+    {{ form.as_p }}
+        <button type="submit">Submit</button>
+</form>
+{% endblock content %} {% endcomment %}
+
+
