@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h1 class="text-center">This is Sing up Page</h1>
+    {% if messages %}
+    {% for m in messages %}
+    <small {% if m.tags %} class="{{m.tags}}" {% endif %} >{{m}}</small>
+    {% endfor %}
+    {% endif %}
+    {% load crispy_forms_tags %}
+    <form action="" method="post" style="width:50%; height: 70%; margin: auto; border: 1px solid black;" novalidate>
+        {% csrf_token %}
+        {% comment %} Uncomment this if using crispy-forms: {{ form|crispy }} {% endcomment %}
+        {% for fm in form %}
+        <div class="form-group mb-3">
+            {{ fm.label_tag }}
+            {{ fm }}
+            <div class="text-danger">
+                {{ fm.errors|striptags }}
+            </div>
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">SignUp</button><br>
+        <small>Alread have an accout? <a href="{% url "login"%}">Login</a> </small>
+    </form>
+{% endblock content %}
