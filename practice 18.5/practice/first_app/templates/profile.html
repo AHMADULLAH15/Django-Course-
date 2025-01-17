@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>This is profile page</h1>
+<button type="button" class="btn btn-warning text-dark"><a class="text-dark text-decoration-none" href="{% url "passChange" %}">Change Password</a></button>
+<button type="button" class="btn btn-warning"><a class="text-dark text-decoration-none" href="{% url "passChangeold" %}">Change Password without old password</a></button>
+{% endblock content %}
