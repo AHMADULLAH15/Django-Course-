@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    .table {
+        border-collapse: collapse;
+        border: 1px solid black; 
+    }
+    .table th, .table td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+    }
+    h1{
+        text-align: center;
+        border: 1px solid black;
+    }
+    a{
+        text-decoration: none;
+        color : black;
+    }
+</style>
+<h1 class="m-auto w-50 mt-5">Musician List</h1><br><br>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Musician Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Album Rating</th>
+        <th scope="col">Instrument type</th>
+        <th scope="col">Album Name</th>
+        <th scope="col">Release Date</th>
+        {% if request.user.is_authenticated %}
+        <th scope="col">Action</th>
+        {% endif %}
+      </tr>
+    </thead>
+    <tbody>
+        {% if musicians %}
+        {% for mu in musicians %}
+        <tr>
+            <td>{{ mu.id }}</td>
+            <td><a href=" {% url 'editmusician' mu.id%} ">{{ mu.FirstName}} {{mu.LastName}}</a></td>
+            <td>{{ mu.Email }}</td>
+            <td>
+                {% for al in mu.albums.all %}
+                {{ al.rating}}<br>
+                {% endfor %}</td>
+            <td>{{ mu.Instrument_type }}</td>
+            <td>
+                {% for al in mu.albums.all %}
+                    {{ al.AlbumName }}<br>
+                {% endfor %}
+            </td>
+            <td>
+                {% for al in mu.albums.all %}
+                    {{ al.ReleaseDate }}<br>
+                {% endfor %}
+            </td>
+            {% if request.user.is_authenticated %}
+            <td> 
+                <a href=" {% url "editalbum" mu.id %} ">Edit</a>
+                <a href=" {% url 'delete' mu.id %} ">Delete</a>
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+          <td colspan="8"><h1>No musicians Data found</h1></td>
+        </tr>
+        {% endif %}
+    </tbody>
+</table>
+
+{% endblock content %}

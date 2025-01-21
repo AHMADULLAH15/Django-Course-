@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 style="text-align: center;">This is Add or Edit Musician Page</h1>
+{% load crispy_forms_tags %}
+<form action="" method="post" class="w-50 m-auto mt-5">
+    {% csrf_token %}
+    {{form | crispy}}
+    {{ album.management_form }}
+    {% for al in album %}
+    {{al | crispy}}
+    {% endfor %}
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock content %}
