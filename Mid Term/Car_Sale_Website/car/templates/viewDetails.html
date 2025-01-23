@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="d-flex justify-content-around px-5 pt-5">
+    {% comment %} {% for car in data %} {% endcomment %}
+    {% comment %} ai kane app er nam car tai car dia access kora jabe sob kiccu jemon car.name {% endcomment %}
+    <div style="width: 18rem height: 20px;">
+        <img src="{{car.image.url}}" class="card-img-top" alt="...">
+      </div>
+    <div class="col-sm-3">
+      <div class="card mx-2" style="width: 18rem;">
+        {% comment %} <img src="{{car.image.url}}" class="card-img-top" alt="..."> {% endcomment %}
+        <div class="card-body">
+          <h5 class="card-title">{{car.name}}</h5>
+          <h5 class="card-title">Price : {{car.price}}</h5>
+          <p class="card-text">{{car.description}}</p>
+          <h5 class="card-title">Brand : {{car.brand}}</h5>
+          <h5 class="card-title">Quantity : {{car.quantity}}</h5>
+          {% comment %} <button type="button" class="btn btn-primary"><a class="text-decoration-none text-white" href="{% url "viewDetails" car.id %}">Buy Now</a></button> {% endcomment %}
+          {% if request.user.is_authenticated %}
+          {% if car.quantity > 0 %}
+          <form method="post" action="{% url 'buy_now' car.id %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-success">Buy Now</button>
+          </form>
+          {% else %}
+          <button class="btn btn-danger" disabled>Out of Stock</button>
+          {% endif %}
+          {% endif %}
+          
+        </div>
+      </div>
+    </div>
+    {% comment %} {% endfor %} {% endcomment %}
+  </div>
+
+  <div class="card m-2">
+    <h5>Total comment {{ comments | length}}</h5>
+    {% for comment in comments %}
+    <div class="card-body border m-2">
+    <p><b>{{comment.name}}</b> </p>
+    <p>{{comment.comment}}</p>
+  </div>
+  {% endfor %}
+  </div>
+
+
+<div class="card m-2">
+  <div class="card-body">
+    <form method = "post" >
+      <h1>Comments</h1>
+  
+      {% csrf_token %}
+      {{ commentForm | crispy}}
+      <button type="submit" class="btn btn-warning">Submit</button>
+  </form>
+  </div>
+</div>
+{% endblock content %}

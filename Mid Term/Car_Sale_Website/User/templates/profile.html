@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<button type="button" class="btn btn-primary"><a class="text-decoration-none text-white" href="{% url "Updateuser" %}">Edite Profile</a></button>
+
+<h1>Your Purchased Cars {{purchased_cars | length}}</h1>
+
+        <div class="d-flex flex-wrap justify-content-start px-5 pt-5">
+            {% for car in purchased_cars %}
+            <div class="col-sm-3">
+              <div class="card mx-2" style="width: 18rem;">
+                <img src="{{car.image.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{car.name}}</h5>
+                  <h5 class="card-title">Price : {{car.price}}</h5>
+                  <h5 class="card-title">Brand : {{car.brand}}</h5>
+                  <button type="button" class="btn btn-primary"><a class="text-decoration-none text-white" href="{% url "viewDetails" car.id %}">View Details</a></button>
+                </div>
+              </div>
+            </div>
+            {% empty %}
+            <h3>No cars purchased yet.</h3>
+            {% endfor %}
+          </div>
+
+{% endblock content %}
